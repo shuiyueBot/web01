@@ -19,4 +19,6 @@ Route::prefix('vm')->group(function(){
     Route::post("loginDo","Login\LoginController@loginDo");//登陆的逻辑方法
     Route::get("reg","Login\LoginController@reg");//注册表单
     Route::post("regDo","Login\LoginController@regDo");//注册的逻辑方法
+    Route::get("test","Login\LoginController@test");//测试方法
+    Route::get("center","Login\LoginController@center")->middleware("checklogin");//用户中心
 });

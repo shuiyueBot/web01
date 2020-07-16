@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User;
+use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     //登陆表单
@@ -24,6 +25,7 @@ class LoginController extends Controller
         }
         if(password_verify($pwd,$userinfo['pwd'])){
             echo "登陆成功";
+            request()->session()->put(['id'=>$userinfo['id'],'name'=>$name]);
         }else{
             echo "密码错误";
            return redirect('/vm/login');
@@ -45,5 +47,22 @@ class LoginController extends Controller
             'pwd'=>$pwd
         ];
         User::insert($data);
+    }
+
+
+
+
+    //用户中心
+    public function center(){
+        return view("vm.center");
+    }
+
+
+
+
+    //测试方法
+    public function test(){
+        $id=request()->session()->get("id");
+        dd($id);
     }
 }
