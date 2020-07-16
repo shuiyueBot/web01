@@ -26,6 +26,7 @@ class LoginController extends Controller
         if(password_verify($pwd,$userinfo['pwd'])){
             echo "登陆成功";
             request()->session()->put(['id'=>$userinfo['id'],'name'=>$name]);
+            return redirect("vm/center");
         }else{
             echo "密码错误";
            return redirect('/vm/login');
