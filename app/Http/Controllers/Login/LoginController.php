@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User;
-use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     //登陆表单
